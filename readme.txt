@@ -37,7 +37,7 @@ We really need to improve this plugin, every bit of your suggestion can make som
 
 == Installation ==
 
-1. Upload `DV Magic Coupons` to the `/wp-content/plugins/` directory
+1. Upload `Magic WP Coupons` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. That's all, your site will be transformed into coupon site
 
