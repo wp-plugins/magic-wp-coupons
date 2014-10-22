@@ -13,7 +13,7 @@ Magic WP Coupons is a WordPress based plugin which can magically turn your WordP
 == Description ==
 
 = What is Magic WP Coupons Plugin? =
-DV Magic coupons is a WordPress based plugin which can magically turn your WordPress theme into a coupons site. It will allow you to add coupons and define stores before you add coupons. This plugin will generate shortcodes for different stores or retailers and you can generate and use different shortcodes on your pages and posts, where you want to show discount coupons.
+Magic WP coupons is a WordPress based plugin which can magically turn your WordPress theme into a coupons site. It will allow you to add coupons and define stores before you add coupons. This plugin will generate shortcodes for different stores or retailers and you can generate and use different shortcodes on your pages and posts, where you want to show discount coupons.
 
 = Features =
 1. Easy to install
