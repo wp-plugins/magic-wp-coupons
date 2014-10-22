@@ -87,9 +87,13 @@ No, The Version only allows you to add your own coupon codes for different retai
 
 == Screenshots ==
 
-1. Add / Edit stores for which you want to add coupons in future.
-2. Add coupon as normal post however there are some additional fields related to coupons, below the post content box.
-3. This is setting page
+1. Magic WP Coupons settings page to enable disable features
+2. Uploading and activating new templates.
+3. Managing coupong stores.
+4. Adding new coupons manually.
+5. Using shortcode insert button.
+6. Adding shortcodes to page or posts.
+7. The front-end of the site with coupons displayed with activated template.
 
 == Changelog ==
 
