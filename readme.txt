@@ -89,6 +89,7 @@ Yes, any theme can be transformed into coupon theme with Magic WP Coupons theme 
 Yes, Magic WP Coupons allow you to use your own CSS. You can visit the Magic WP Coupon setting page in your admin panel to allow external CSS. It can pick up styles from your theme in use.
 
 = Do Lite version support Prosperent.com API?=
+
 No, The Version only allows you to add your own coupon codes for different retailers or online stores. Therefore if you need Prosperent.com automatic pull feature, you need to buy premium version of Magic WP Coupons plugin.
 
 == Screenshots ==
