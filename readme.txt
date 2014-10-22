@@ -1,7 +1,7 @@
 === Magic Wp Coupons - Lite ===
 Contributors: shahzad11
 Donate link: http://dvcoupons.designsvalley.com/
-Tags: affiliate, widget, coupons, wp coupons, coupons, marketing, affiliate links, discount coupons, coupon script, wordpress coupon script, wp coupon script, wordpress coupons plugin
+Tags: affiliate, widget, coupons, wp coupons, coupons, marketing, affiliate links, discount coupons, coupon script, wordpress coupon script, wp coupon script, wordpress coupons plugin, coupon, custom post type, shortcode, prosparent
 Requires at least: 3.0
 Tested up to: 4.0
 Stable tag: 2.0
@@ -16,6 +16,8 @@ Magic WP Coupons is a WordPress based plugin which can magically turn your WordP
 Magic WP coupons is a WordPress based plugin which can magically turn your WordPress theme into a coupons site. It will allow you to add coupons and define stores before you add coupons. This plugin will generate shortcodes for different stores or retailers and you can generate and use different shortcodes on your pages and posts, where you want to show discount coupons.
 
 = Features =
+[Demo - Lite version](http://magic-wp-coupons.designsvalley.com/free-version/)
+
 1. Easy to install
 2. One time affiliate link addition for each store
 3. Stores Logos or thumbnails support
@@ -32,6 +34,9 @@ We really need to improve this plugin, every bit of your suggestion can make som
 
 
 = Premium Version Features =
+
+[Premimum Version](http://magic-wp-coupons.designsvalley.com/magic-wp-coupons-premium-version/)
+
 1. User friendly admin control panel
 2. SEO compliant.
 3. 5 different coupon snippet design templates
@@ -45,7 +50,7 @@ We really need to improve this plugin, every bit of your suggestion can make som
 12. Automatically pull coupon codes and new offers from Prosperent API.
 13. Detailed reporting feature allows you to analyze and optimize your coupons
 
-[Premimum Version](http://magic-wp-coupons.designsvalley.com/magic-wp-coupons-premium-version/)
+
 
 
 = Credits =
@@ -66,7 +71,8 @@ We really need to improve this plugin, every bit of your suggestion can make som
 = How to use this plugin =
 1. Firstly go to left menu in your wp-admin control panel and then click on **stores** , now you can add or edit stores here. Assign featured image to stores so that will be shown against coupon posts for that stores
 2. Now you can add your coupons as normal posts, there will be custom meta box for you to add coupon details and assign to store etc.
-3. To display all the coupons on any page or post, use the following shortcode **[coupons limit="10" orderby="date" order="DESC"]**
+3. To display all the coupons on any page or post, use the following shortcode 
+**[coupons limit="10" orderby="date" order="DESC"]**
 
 == Frequently asked questions ==
 
@@ -82,7 +88,7 @@ Yes, any theme can be transformed into coupon theme with Magic WP Coupons theme 
 
 Yes, Magic WP Coupons allow you to use your own CSS. You can visit the Magic WP Coupon setting page in your admin panel to allow external CSS. It can pick up styles from your theme in use.
 
-= Do Lite version support Prosperent.com API to pull automatically coupons for different online stores=
+= Do Lite version support Prosperent.com API?=
 No, The Version only allows you to add your own coupon codes for different retailers or online stores. Therefore if you need Prosperent.com automatic pull feature, you need to buy premium version of Magic WP Coupons plugin.
 
 == Screenshots ==
