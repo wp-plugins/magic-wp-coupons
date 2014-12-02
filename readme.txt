@@ -1,5 +1,5 @@
 === Magic WP Coupons - Lite ===
-Contributors: shahzad11
+Contributors: shahzad11,skyhound
 Donate link: http://magic-wp-coupons.designsvalley.com/
 Tags: affiliate, widget, coupons, wp coupons, coupons, marketing, affiliate links, discount coupons, coupon script, wordpress coupon script, wp coupon script, wordpress coupons plugin, coupon, custom post type, shortcode, prosperent
 Requires at least: 3.0
