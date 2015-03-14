@@ -1,14 +1,14 @@
 === Magic WP Coupons - Lite ===
 Contributors: shahzad11,skyhound
 Donate link: http://magic-wp-coupons.designsvalley.com/
-Tags: affiliate, widget, coupons, wp coupons, coupons, marketing, affiliate links, discount coupons, coupon script, wordpress coupon script, wp coupon script, wordpress coupons plugin, coupon, custom post type, shortcode, prosperent
+Tags: make money,monetization, coupons, wp coupons, coupons, affiliate marketing, affiliate links, discount coupons, coupon script, wordpress coupon script, wp coupon script, wordpress coupons plugin, earn money, custom post type, shortcode, prosperent
 Requires at least: 3.0
 Tested up to: 4.1
-Stable tag: 2.0
+Stable tag: 2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Magic WP Coupons is a WordPress based plugin which can magically turn your WordPress theme into a coupons site.
+Magic WP Coupons is a WordPress based plugin which can magically turn your WordPress theme into a affiliate coupons site.
 
 == Description ==
 
@@ -25,7 +25,9 @@ Magic WP Coupons is a WordPress based plugin which can magically turn your WordP
 5. External CSS support.
 6. Compatible with 99% of WordPress templates available.
 7. Widget ready.
-
+8. Upload your own templates to tailor your coupon boxes.
+9. Multiple coupon box templates feature allows you to upload multple coupon box templates and switch between them.
+10. Affiliate URls are now cloaked in Magic WP Coupons (Lite version).
 
 
 
@@ -112,6 +114,16 @@ Initial release.
 2. Added support for different coupon snippets or box templates so you can change the look and feel of coupon displays. 
 3. Added compatibility for WordPress 4.0.
 4. "Click to copy" bug is fixed.
+
+= 2.1 =
+1. Coupon box snippets layout issue fixed.
+2. Coupone box template selector is enabled.
+3. Coupon box template installer is enabled.
+4. Save button for admin configurations is fixed now.
+5. Click to copy but fixed.
+6. IP based like/dislike and click counter.
+7. Shortcode button in WYSIWYG editor, is fixed now.
+
 
 
 == Upgrade notice ==

@@ -1,95 +1,158 @@
 <?php
 /*
-Plugin Name: Magic WP Coupons
-Plugin URI: http://dvcoupons.designsvalley.com
-Description: A Free coupon site plugin for wordpress.
+Plugin Name: Magic WP Coupons - Lite
+Plugin URI: http://designsvalley.com
+Description: A coupons site plugin, which generally has a shortcode to put coupon type posts where you want.
 Author: Shahzad Ahmad Mirza
 Author URI: http://shahzadmirza.com
-Version: 1.0
-License: GPLv2 or later
+Version: 2.2.1
+License: LGPLv2
 */
+
 
 define("PLUGIN_NAME","DV Coupons");
 define("PLUGIN_POST_TYPE","coupons");
 define("PLUGIN_URL",__file__);
 define("PLUGIN_BASE",dirname(__file__));
 define("PLUGIN_DIR",plugin_dir_url(PLUGIN_URL));
+define("PLUGIN_JS_DIR",PLUGIN_DIR."js/");
+define("PLUGIN_CSS_DIR",PLUGIN_DIR."css/");
+define("PLUGIN_MENU_TITLE",'DV Coupon Options');
 $themename = PLUGIN_NAME;
 $shortname = "dv";
+$active_template_url	=	PLUGIN_DIR.'/templates/'.(get_option("dv_coupon_template")!='' ? get_option("dv_coupon_template") : 'Mycoupons').'/';
 
-include("functions.php");
-include("admin_functions/admin_css.php");
-include("admin_functions/social_settings.php");
-include("admin_functions/general_settings.php");
-include("post_types.php");
-include("dv_ajax.php");
-include("custom-widgets.php");
+include("admin/custom_post_types_with_taxonomies.php");
+include("lib/wp_utitlities.php");
+include("lib/utilities.class.php");
+include("admin/meta_box.php");
+include("lib/dv_ajax.php");
+include("lib/html.php");
+include("admin/cloak-manager.php");
+include("editors_button/index.php");
 
+include("admin/widgets/latest_coupons.php");
+include("admin/widgets/popular_coupons.php");
+include("admin/widgets/coupon_stores.php");
+include("admin/includes/template_installer.php");
 
+include("admin/admin-panel.php");
 
+$wp_util	=	new	wp_util();
+$util		=	new	utilities();
+$html		=	new	Html();
+include("lib/functions.php");
+include("lib/shortcodes.php");
 
+require_once("lib/templating.php");				# Templating single/archive coupon pages
 
-function dv_coupons_menu() {
-	add_menu_page(PLUGIN_NAME." Dashboard", PLUGIN_NAME, 'manage_options', 'dv_coupons', 'dv_dashboard');
-	add_submenu_page('dv_coupons','General Settings : DV Coupons', 'General Settings', 'manage_options', 'dv_coupons_general_settings', 'dv_general_settings');
-	add_submenu_page('dv_coupons','Social Settings : DV Coupons', 'Social Settings', 'manage_options', 'dv_coupons_social_settings', 'dv_add_admin');
-	add_submenu_page('dv_coupons','Pro Version : DV Coupons', 'Pro Version', 'manage_options', 'dv_coupons_pro_version', 'pro_version');
-	
+//----------------------------------------------  Construct & Display  Side Bars ------------------------------------------------//
+###################################################################################################################################
+$wp_util->add_sidebar(array(
+		'name'=>'Blog Sidebar',
+		/*'id'=>	'right_sidebar',*/
+		'description'=>'Sidebar to place widgets on blog page',
+        'before_widget' => '<li id="%1$s" class="widget %2$s">',
+        'after_widget' => '</li>',
+        'before_title' => '<h3 class="blog_sidebar_widget_title">',
+        'after_title' => '</h3>',
+));
+$wp_util->build_side_bars();
+//-------------------------------------------------------------------------------------------------------------------------------//
+
+//------------------------------------------------  Add JS & CSS to head tags ---------------------------------------------------//
+###################################################################################################################################
+function	add_to_head_tag(){
+	global $util;
+	echo '<script src="'.PLUGIN_JS_DIR.'script.js" type="text/javascript" charset="utf-8"></script>'."\n";
+	echo '<link type="text/css" href="'.PLUGIN_CSS_DIR.'admin_style.css" rel="stylesheet" media="screen" />'."\n";
 }
+add_action('wp_head', 'add_to_head_tag');
+//-------------------------------------------------------------------------------------------------------------------------------//
 
 
 
-function	pro_version(){
-	echo '<iframe  scrolling="auto" height="100%" width="100%" src="http://dvcoupons.designsvalley.com"></iframe><noframes></noframes>';
+
+
+//---------------------------------------------------  Enqueueing Javascripts ---------------------------------------------------//
+###################################################################################################################################
+function modify_jquery() {
+	if (!is_admin()) {
+		// comment out the next two lines to load the local copy of jQuery
+		wp_deregister_script('jquery');
+		wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js', false, '1.8.1');
+		wp_enqueue_script('jquery');
+		
+		wp_register_script('jqueryClipBoard', PLUGIN_DIR.'js/jquery.zclip.js', false, '1.1.1');
+		wp_enqueue_script('jqueryClipBoard');
+				
+//		wp_register_script('magicWpCouponsCustom', PLUGIN_DIR.'templates/Mycoupons/custom.js', false);
+		wp_enqueue_script( 'magicWpCouponsCustom', PLUGIN_DIR.'templates/'.(get_option("dv_coupon_template")!='' ? get_option("dv_coupon_template") : 'Mycoupons').'/custom.js', array(), '1.0.0' );
+		
+		wp_enqueue_style( 'dv_default_template', PLUGIN_DIR.'templates/'.(get_option("dv_coupon_template")!='' ? get_option("dv_coupon_template") : 'Mycoupons').'/style.css' );
+		
+//		wp_register_script('myajax', PLUGIN_DIR.'js/dv_coupons.js', false);
+//		wp_enqueue_script('myajax');
+		
+	}
 }
-
-
-
-add_action('admin_menu', 'dv_coupons_menu');
+add_action('init', 'modify_jquery', 50);
+//-------------------------------------------------------------------------------------------------------------------------------//
 
 
 
 
+//------------------------------  Controlling Like/Dislike/etc Appearance Modified by Team Member of DV  -------------------------//
+###################################################################################################################################
 
-function	display_coupons($content){
-	global $post;
+function check_and_control_options(){
 	
-	
-	$file	=	file_get_contents(PLUGIN_BASE."/templates/coupon_snippet.html");
-	$text	=	custom_excerpt($post->post_content);
-	
-	$post_meta	=	get_post_meta($post->ID);
-	$likes		=	$post_meta['likes'][0];
-	$dislikes	=	$post_meta['dislikes'][0];
-	$clicks		=	$post_meta['clicks'][0];
-	$store_id	=	$post_meta['store_id'][0];
-	
-	$feat_image = wp_get_attachment_url( get_post_thumbnail_id($store_id) );
-	if(get_option("dv_use_timthumb")){
-		$feat_image	=	PLUGIN_DIR."timthumb.php?h=120&w=120&src=".$feat_image;
+	if(!get_option("dv_display_likes")){
+		echo '<style type="text/css"> a.like{display:none !important;} </style>';
+	}
+	if(!get_option("dv_display_dislikes")){
+		echo '<style type="text/css"> a.dislike{display:none !important;} </style>';
+	}
+	if(!get_option("dv_display_clicks")){
+		echo '<style type="text/css"> .coupon_views{display:none !important;} </style>';
 	}
 	
-	$tags	=	array(
-						"coupon_code"			=>	$post_meta['coupon_code'][0],
-						"coupon_discount"		=>	$post_meta['coupon_discount'][0],
-						"coupon_title"			=>	$post->post_title,
-						"expiry_date"			=>	$post_meta['coupon_expiry_date'][0],
-						"coupon_text_contents"	=>	$text,
-						"post_id"				=>	$post->ID,
-						"featured_image" 		=>  $feat_image,
-						"store_url"				=>	get_post_meta($store_id,'coupon_store_url',true),
-						"coupon_views"			=>	(empty($clicks))?'0':$clicks,
-						"likes"					=>	(empty($likes))?'0':$likes,
-						"dislikes"				=>	(empty($dislikes))?'0':$dislikes
-					);
-	
-	
-	return parse_template($file, $tags);
 }
 
-add_filter("the_content","display_coupons");
-add_filter("the_excerpt","display_coupons");
+add_action("wp_head", "check_and_control_options");
+
+//-------------------------------------------------------------------------------------------------------------------------------//
 
 
+
+//------------------------------  Creating New Table in DB when plugin is installed - For Url Cloaking  -------------------------//
+###################################################################################################################################
+
+
+function install_table_for_dvc() {
+   	global $wpdb;
+  	$rablename = 'dv_cloaked_urls';
+ 
+	// create the ECPT metabox database table
+	if($wpdb->get_var("show tables like '$rablename'") != $rablename) 
+	{
+
+		$sql = "CREATE TABLE " . $rablename . " (
+		`id` mediumint(9) NOT NULL AUTO_INCREMENT,
+		`cloaked_url` varchar (255) NULL,
+		`actaul_url` longtext NULL,
+		`hits` varchar (7) NULL,
+		UNIQUE KEY id (id)
+		);";
+ 
+		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+		dbDelta($sql);
+	}
+	 
+}
+
+register_activation_hook(__FILE__ , 'install_table_for_dvc');
+
+//-------------------------------------------------------------------------------------------------------------------------------//
 
 ?>
