@@ -3,7 +3,7 @@ Contributors: shahzad11,skyhound
 Donate link: http://magic-wp-coupons.designsvalley.com/
 Tags: make money,monetization, coupons, wp coupons, coupons, affiliate marketing, affiliate links, discount coupons, coupon script, wordpress coupon script, wp coupon script, wordpress coupons plugin, earn money, custom post type, shortcode, prosperent
 Requires at least: 3.0
-Tested up to: 4.1
+Tested up to: 4.2.2
 Stable tag: 2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
