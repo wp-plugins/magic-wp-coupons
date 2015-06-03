@@ -12,7 +12,7 @@ Magic WP Coupons is a WordPress based plugin which can magically turn your WordP
 
 == Description ==
 
-=Notice=
+= Notice =
 Our premium plugin site is down for maintenance. We apologize for inconvenience.
 
 = What is Magic WP Coupons Plugin? =
