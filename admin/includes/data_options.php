@@ -146,7 +146,7 @@ if ($handle = opendir(PLUGIN_BASE.'/templates')) {
 
 
 /*------------------------------- New Work --------------------------------------------*/
-
+/*
 	$dv_general_options[] = array(	"name" => "Get More Templates",
 									"icon" => "more",
 									"type" => "page");
@@ -201,7 +201,7 @@ if(count($titles)==0){
 
 	$dv_general_options[] = array(	"type" => "heading_end");
 	
-	$dv_general_options[] = array(	"type" => "page_end");	
+	$dv_general_options[] = array(	"type" => "page_end");*/	
 
 
 	$dv_general_options[] = array(	"name" => "Buy Premium Version",
