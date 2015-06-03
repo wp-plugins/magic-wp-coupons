@@ -4,13 +4,16 @@ Donate link: http://magic-wp-coupons.designsvalley.com/
 Tags: make money,monetization, coupons, wp coupons, coupons, affiliate marketing, affiliate links, discount coupons, coupon script, wordpress coupon script, wp coupon script, wordpress coupons plugin, earn money, custom post type, shortcode, prosperent
 Requires at least: 3.0
 Tested up to: 4.1
-Stable tag: 2.0
+Stable tag: 2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Magic WP Coupons is a WordPress based plugin which can magically turn your WordPress theme into a affiliate coupons site.
 
 == Description ==
+
+= Notice =
+Our premium plugin site is down for maintenance. We apologize for inconvenience.
 
 = What is Magic WP Coupons Plugin? =
 Magic WP Coupons is a WordPress based plugin which can magically turn your WordPress theme into a coupon website. Tap into the huge referral commission market by offering your site visitors valuable online discount coupons. Magic WP Coupons easily lets you define stores and add coupons.  This plugin will generate shortcodes for different stores or retailers and you can generate and use these shortcodes on your pages and posts, wherever you want to show discount coupons. We are constantly improving WP Magic Coupons and your feedback is always welcome.  We are adding new features and updating this plugin often.  For extra automated functionality, check out our premium version below. 
@@ -124,7 +127,8 @@ Initial release.
 6. IP based like/dislike and click counter.
 7. Shortcode button in WYSIWYG editor, is fixed now.
 
-
+= 2.2=
+1. Network error bug is fixed.
 
 == Upgrade notice ==
 
